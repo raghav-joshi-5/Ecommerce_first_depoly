@@ -1,0 +1,66 @@
+<div class="row">
+  <div
+    class="col-md-3 col-lg-2 col-sm-6 mb-2 hoverButtoncard"
+    *ngFor="let prod of prodArr"
+  >
+    <mat-card class="mat-card-box" [routerLink]="prod._id"
+      ><div class="imgs">
+        <img
+          mat-card-image
+          [src]="prod.images"
+          [alt]="prod.title"
+          [title]="prod.title"
+        />
+      </div>
+
+      <mat-card-content>
+        <div class="contentt">
+          <p>
+            {{ prod.category }}
+          </p>
+          <p>
+            {{ prod.title }}
+          </p>
+        </div>
+      </mat-card-content>
+      <div class="hoverButton">
+        <button
+          mat-mini-fab
+          color="primary"
+          matTooltip="Add to Bag"
+          matTooltipPosition="left"
+        >
+          <mat-icon>shopping_bag</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          matTooltip="View Details"
+          matTooltipPosition="left"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          matTooltip="Add to Favorites"
+          matTooltipPosition="left"
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          matTooltip="Shuffle"
+          matTooltipPosition="left"
+        >
+          <mat-icon>shuffle</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <strong>{{ prod.total_price }}</strong>
+      </div>
+    </mat-card>
+  </div>
+</div>
