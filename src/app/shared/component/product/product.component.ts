@@ -11,8 +11,8 @@ import { ProductService } from '../../service/product.service';
 export class ProductComponent implements OnInit {
   prodId!: string;
   prodObj!: Iproduct;
-  original_price!: number;
-  counter: number = 1;
+  value: number = 1;
+  selectedImage!: string;
   constructor(
     private _route: ActivatedRoute,
     private _productService: ProductService
@@ -22,6 +22,20 @@ export class ProductComponent implements OnInit {
     this.prodId = this._route.snapshot.params['_id'];
     this._productService.getobj(this.prodId).subscribe((s) => {
       this.prodObj = s;
+      this.selectedImage = this.prodObj.images[0];
     });
+  }
+
+  onAdd() {
+    this.value++;
+  }
+  onMinus() {
+    if (this.value > 1) {
+      this.value--;
+    }
+  }
+
+  onimgChnage(img: string) {
+    this.selectedImage = img;
   }
 }

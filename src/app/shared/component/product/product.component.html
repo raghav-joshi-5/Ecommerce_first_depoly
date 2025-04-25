@@ -2,13 +2,43 @@
   <div class="col-md-4">
     <div class="main-image">
       <img
-        [src]="prodObj.images"
+        [src]="selectedImage"
         [alt]="prodObj.title"
         [title]="prodObj.title"
       />
     </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="slideImg">
+          <img
+            (click)="onimgChnage(prodObj.images[1])"
+            [src]="prodObj.images[1]"
+            [alt]="prodObj.title"
+            [title]="prodObj.title"
+          />
+          <img
+            (click)="onimgChnage(prodObj.images[2])"
+            [src]="prodObj.images[2]"
+            [alt]="prodObj.title"
+            [title]="prodObj.title"
+          />
+          <img
+            (click)="onimgChnage(prodObj.images[3])"
+            [src]="prodObj.images[3]"
+            [alt]="prodObj.title"
+            [title]="prodObj.title"
+          />
+          <img
+            (click)="onimgChnage(prodObj.images[4])"
+            [src]="prodObj.images[4]"
+            [alt]="prodObj.title"
+            [title]="prodObj.title"
+          />
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-5">
     <p>{{ prodObj.category }} / {{ prodObj.subcategory }}</p>
     <h5 class="p-0 m-0 mb-4">{{ prodObj.title }}</h5>
     <ul class="product-info">
@@ -38,7 +68,6 @@
     <mat-divider></mat-divider>
     <h3 class="price-info py-2">
       {{ prodObj.total_price }}
-      <span class="strike">{{ original_price }}</span>
     </h3>
     <ng-container *ngIf="prodObj.product_specifications; else noProdSpec">
       <ul
@@ -72,7 +101,7 @@
       </ng-template>
     </div>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <div class="card">
       <div class="card-body">
         <h3>{{ prodObj.total_price }}</h3>
@@ -91,15 +120,40 @@
             </div>
           </div>
         </div>
-        <div class="counter">
-          <div class="box box1">
-            <p>-</p>
-          </div>
-          <div class="box">
-            {{ counter }}
-          </div>
-          <div class="box box2 mr-3">
-            <p>+</p>
+        <div class="count mr-2">
+          <p class="mr-2 m-0 my-auto">Quantity:</p>
+          <span (click)="onMinus()" class="box boxMinus"
+            ><mat-icon>remove</mat-icon></span
+          >
+          <span class="box">{{ value }}</span>
+          <span (click)="onAdd()" class="box boxAdd"
+            ><mat-icon>add</mat-icon></span
+          >
+        </div>
+        <div class="addtocartbutton">
+          <button class="btn btn-block" mat-raised-button color="warn">
+            Add to Cart <mat-icon>shopping_cart</mat-icon>
+          </button>
+          <button
+            class="btn btn-block"
+            mat-raised-button
+            style="background-color: #333e48; color: #fff"
+          >
+            Buy Now
+          </button>
+        </div>
+
+        <div class="details">
+          <p>Details:</p>
+          <div class="returnpolicy">
+            <strong class="my-auto">Return Policy:</strong>
+            <ng-container
+              *ngIf="prodObj.return_policy; else noPolicy"
+            ></ng-container>
+            <small>{{ prodObj.return_policy }}</small>
+            <ng-template #noPolicy>
+              <p class="alert alert-danger">No Return Policy On this Product</p>
+            </ng-template>
           </div>
         </div>
       </div>
