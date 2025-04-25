@@ -81,15 +81,20 @@
   }
 }
 .slideImg {
-  width: 100%;
+  width: 100px;
   height: 100px;
-  display: flex;
-  gap: 20px;
+  display: inline-flex;
+  margin: 10px;
   cursor: pointer;
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    border: 1px solid black;
+  justify-content: center;
+  border: 1px solid black;
+  li {
+    list-style: none;
+    display: inline-block;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
   }
 }

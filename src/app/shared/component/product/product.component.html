@@ -8,32 +8,16 @@
       />
     </div>
     <div class="row">
-      <div class="col-md-3">
-        <div class="slideImg">
-          <img
-            (click)="onimgChnage(prodObj.images[1])"
-            [src]="prodObj.images[1]"
-            [alt]="prodObj.title"
-            [title]="prodObj.title"
-          />
-          <img
-            (click)="onimgChnage(prodObj.images[2])"
-            [src]="prodObj.images[2]"
-            [alt]="prodObj.title"
-            [title]="prodObj.title"
-          />
-          <img
-            (click)="onimgChnage(prodObj.images[3])"
-            [src]="prodObj.images[3]"
-            [alt]="prodObj.title"
-            [title]="prodObj.title"
-          />
-          <img
-            (click)="onimgChnage(prodObj.images[4])"
-            [src]="prodObj.images[4]"
-            [alt]="prodObj.title"
-            [title]="prodObj.title"
-          />
+      <div class="col-md-12 px-auto">
+        <div class="slideImg" *ngFor="let prod of prodObj.images">
+          <li>
+            <img
+              (click)="onimgChnage(prod)"
+              [src]="prod"
+              [alt]="prodObj.title"
+              [title]="prodObj.title"
+            />
+          </li>
         </div>
       </div>
     </div>
@@ -66,7 +50,7 @@
       <li><a routerLink="">View shop</a></li>
     </ul>
     <mat-divider></mat-divider>
-    <h3 class="price-info py-2">
+    <h3 class="price-info py-2 text-danger">
       {{ prodObj.total_price }}
     </h3>
     <ng-container *ngIf="prodObj.product_specifications; else noProdSpec">
@@ -104,7 +88,7 @@
   <div class="col-md-3">
     <div class="card">
       <div class="card-body">
-        <h3>{{ prodObj.total_price }}</h3>
+        <h3 class="text-danger">{{ prodObj.total_price }}</h3>
         <div class="d-flex">
           <mat-icon class="mr-1">local_shipping</mat-icon>
           <p>Free Shipping</p>
@@ -158,5 +142,21 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <mat-tab-group>
+      <mat-tab label="Description">
+        <ul *ngFor="let desc of prodObj.product_description">
+          <li>
+            {{ desc }}
+          </li>
+        </ul>
+      </mat-tab>
+      <mat-tab label="Product Information">{{
+        prodObj.product_details
+      }}</mat-tab>
+    </mat-tab-group>
   </div>
 </div>

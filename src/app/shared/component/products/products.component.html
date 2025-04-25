@@ -36,6 +36,10 @@
           <mat-icon>visibility</mat-icon>
         </button>
         <button
+          (click)="visibilility($event)"
+          [ngClass]="{
+            liking: isLike
+          }"
           mat-mini-fab
           color="primary"
           matTooltip="Add to Favorites"

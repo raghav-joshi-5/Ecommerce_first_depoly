@@ -10,6 +10,8 @@ import { Iproduct } from '../../model/data';
 export class ProductsComponent implements OnInit {
   prodArr!: Iproduct[];
   isImageOne = true;
+
+  isLike: boolean = false;
   constructor(private _productService: ProductService) {}
 
   ngOnInit(): void {
@@ -21,5 +23,10 @@ export class ProductsComponent implements OnInit {
       this.prodArr = res;
       // console.log(this.prodArr);
     });
+  }
+
+  visibilility(event: Event) {
+    event.stopPropagation();
+    this.isLike = !this.isLike;
   }
 }
