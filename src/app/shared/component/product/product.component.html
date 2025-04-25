@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div class="main-image">
       <img
         [src]="prodObj.images"
@@ -9,9 +9,100 @@
     </div>
   </div>
   <div class="col-md-6">
-    <p>{{ prodObj.title }}</p>
-    <p>{{ prodObj.product_description }}</p>
-    <p>{{ prodObj.product_details }}</p>
-    <p>{{ prodObj.tags }}</p>
+    <p>{{ prodObj.category }} / {{ prodObj.subcategory }}</p>
+    <h5 class="p-0 m-0 mb-4">{{ prodObj.title }}</h5>
+    <ul class="product-info">
+      <li class="star-review">
+        <ul class="star-list">
+          <li class="star">
+            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+              <mat-icon *ngIf="prodObj.rating >= star">star</mat-icon>
+              <mat-icon
+                *ngIf="prodObj.rating >= star - 0.5 && prodObj.rating < star"
+                >star_half</mat-icon
+              >
+              <mat-icon *ngIf="prodObj.rating < star - 0.5"
+                >star_border</mat-icon
+              >
+            </ng-container>
+          </li>
+
+          <p class="ml-2">Review ({{ prodObj.reviews_count }})</p>
+          <span class="mr-2 ml-2">|</span>
+        </ul>
+      </li>
+      <li><p>Sold:102</p></li>
+      <span class="mr-2 ml-2">|</span>
+      <li><a routerLink="">View shop</a></li>
+    </ul>
+    <mat-divider></mat-divider>
+    <h3 class="price-info py-2">
+      {{ prodObj.total_price }}
+      <span class="strike">{{ original_price }}</span>
+    </h3>
+    <ng-container *ngIf="prodObj.product_specifications; else noProdSpec">
+      <ul
+        class="p-0"
+        *ngFor="let specification of prodObj.product_specifications"
+      >
+        <li class="specification-list">
+          <strong>{{ specification.specification_name }}:</strong>
+          {{ specification.specification_value }}
+        </li>
+      </ul>
+    </ng-container>
+    <ng-template #noProdSpec>
+      <p class="alert alert-danger">No product specification available</p>
+    </ng-template>
+
+    <mat-divider></mat-divider>
+
+    <h3 class="py-2">About this item</h3>
+    <div>
+      <ng-container
+        *ngIf="prodObj.product_description; else noSpec"
+      ></ng-container>
+      <ul class="product-desc">
+        <li class="py-2" *ngFor="let about of prodObj.product_description">
+          {{ about }}
+        </li>
+      </ul>
+      <ng-template #noSpec>
+        <p class="alert alert-danger">No product description available</p>
+      </ng-template>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-body">
+        <h3>{{ prodObj.total_price }}</h3>
+        <div class="d-flex">
+          <mat-icon class="mr-1">local_shipping</mat-icon>
+          <p>Free Shipping</p>
+        </div>
+        <div class="shipping-to">
+          <p>shipping to:</p>
+          <div class="address-cur">
+            <div class="address-cur-item">
+              <select class="select-default">
+                <option selected>Home</option>
+                <option>Office</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="counter">
+          <div class="box box1">
+            <p>-</p>
+          </div>
+          <div class="box">
+            {{ counter }}
+          </div>
+          <div class="box box2 mr-3">
+            <p>+</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

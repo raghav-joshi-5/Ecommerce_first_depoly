@@ -1,25 +1,27 @@
 .imgs {
   height: 200px;
-  width: 150px;
+  width: 200px;
   img {
     height: 100%;
     width: 100%;
     transform: scale(1);
-    object-fit: cover;
-    margin-left: 20px;
-    margin-top: 3px;
+    object-fit: contain;
+    margin-left: 0px;
+    margin-top: 0;
+    overflow: hidden;
   }
 }
 
 .contentt {
   height: 85px;
+  margin-bottom: 0;
   p {
     padding: 0;
+    margin-bottom: 0;
   }
 }
 .mat-card-box {
   cursor: pointer;
-  //   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   border: 1px solid #e0e0e0;
@@ -42,7 +44,7 @@
 .hoverButton {
   position: absolute;
   top: 35%;
-  right: -20px;
+  right: -17px;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;

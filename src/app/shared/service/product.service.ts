@@ -15,15 +15,15 @@ export class ProductService {
   productArr: Array<Iproduct> = product;
   constructor(private _http: HttpClient) {}
 
-  fetchallproduct(): Observable<Iproduct[]> {
-    return this._http.get<Iproduct[]>(`${this.PRODUCT_URL}/filter`);
-  }
-
-  // fetchallproduct(val: string): Observable<Iproduct[]> {
-  // const params = new HttpParams().set('category', val);
-  // return this._http.get<Iproduct[]>(`${this.PRODUCT_URL}/filter`, { params });
-  // return of(this.productArr);
+  // fetchallproduct(): Observable<Iproduct[]> {
+  //   return this._http.get<Iproduct[]>(`${this.PRODUCT_URL}/filter`);
   // }
+
+  fetchallproduct(val: string): Observable<Iproduct[]> {
+    const params = new HttpParams().set('category', val);
+    return this._http.get<Iproduct[]>(`${this.PRODUCT_URL}/filter`, { params });
+    // return of(this.productArr);
+  }
 
   getobj(prodId: string): Observable<Iproduct> {
     return this._http.get<Iproduct>(`${this.PRODUCT_URL}/${prodId}`);

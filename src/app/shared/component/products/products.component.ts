@@ -13,13 +13,13 @@ export class ProductsComponent implements OnInit {
   constructor(private _productService: ProductService) {}
 
   ngOnInit(): void {
-    this._productService.fetchallproduct().subscribe((s) => {
-      this.prodArr = s;
-    });
-
-    // this._productService.fetchallproduct('Mobiles').subscribe((res) => {
-    //   this.prodArr = res;
-    //   console.log(this.prodArr);
+    // this._productService.fetchallproduct().subscribe((s) => {
+    //   this.prodArr = s;
     // });
+
+    this._productService.fetchallproduct('Mobiles').subscribe((res) => {
+      this.prodArr = res;
+      // console.log(this.prodArr);
+    });
   }
 }

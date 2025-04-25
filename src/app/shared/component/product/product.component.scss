@@ -9,3 +9,62 @@
     object-fit: contain;
   }
 }
+
+.product-info {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  .star-list {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    .star {
+      color: #fcb500;
+    }
+  }
+}
+
+.price-info {
+  .strike {
+    text-decoration: line-through;
+  }
+}
+
+.specification-list {
+  list-style: none;
+}
+
+.product-desc {
+  padding-left: 20px;
+}
+
+.shipping-to {
+  display: flex;
+  .address-cur {
+    display: flex;
+    cursor: pointer;
+    .select-default {
+      border: unset;
+    }
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  .box {
+    width: 37px;
+    height: 37px;
+    font-size: 25px;
+    border: 1px solid gray;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+  }
+  .box1 {
+    border-radius: 5px 0px 0px 5px;
+  }
+  .box2 {
+    border-radius: 0px 5px 5px 0px;
+  }
+}

@@ -11,6 +11,8 @@ import { ProductService } from '../../service/product.service';
 export class ProductComponent implements OnInit {
   prodId!: string;
   prodObj!: Iproduct;
+  original_price!: number;
+  counter: number = 1;
   constructor(
     private _route: ActivatedRoute,
     private _productService: ProductService
