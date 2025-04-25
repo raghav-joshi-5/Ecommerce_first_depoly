@@ -80,6 +80,7 @@
     display: flex;
   }
 }
+
 .slideImg {
   width: 100px;
   height: 100px;
@@ -97,4 +98,9 @@
       object-fit: contain;
     }
   }
+}
+
+.position-card {
+  position: sticky;
+  top: 0;
 }

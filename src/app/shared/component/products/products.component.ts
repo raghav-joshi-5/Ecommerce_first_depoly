@@ -9,7 +9,7 @@ import { Iproduct } from '../../model/data';
 })
 export class ProductsComponent implements OnInit {
   prodArr!: Iproduct[];
-  isImageOne = true;
+  isImage: any = null;
 
   isLike: boolean = false;
   constructor(private _productService: ProductService) {}

@@ -5,7 +5,13 @@
   >
     <mat-card class="mat-card-box" [routerLink]="prod._id"
       ><div class="imgs">
-        <img [src]="prod.images" [alt]="prod.title" [title]="prod.title" />
+        <img
+          (mouseenter)="isImage = prod"
+          (mouseleave)="isImage = null"
+          [src]="isImage === prod ? prod.images[1] : prod.images[0]"
+          [alt]="prod.title"
+          [title]="prod.title"
+        />
       </div>
 
       <mat-card-content>
